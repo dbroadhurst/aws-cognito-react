@@ -1,7 +1,13 @@
 {
   "name": "app",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbroadhurst/aws-cognito-react"
+  },
+  "keywords": ["aws", "cognito", "users", "account", "react", "redux", "saga"],
+  "author": "David Broadhurst",
+  "license": "MIT",
   "dependencies": {
     "material-ui": "^0.18.1",
     "prop-types": "^15.5.10",
