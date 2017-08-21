@@ -1,6 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
+  "description": "aws cognito reference code",
   "repository": {
     "type": "git",
     "url": "https://github.com/dbroadhurst/aws-cognito-react"
@@ -22,6 +23,8 @@
     "redux-form-material-ui": "^4.2.0",
     "redux-saga": "^0.15.3",
     "validator": "^7.0.0",
+    "aws-cognito-redux-saga": "^1.0.0",
+    "aws-cognito-promises": "^1.0.0",
     "amazon-cognito-identity-js": "^1.19.0",
     "aws-sdk": "^2.94.0"
   },
