@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "aws-cognito-react",
   "version": "1.0.0",
   "description": "aws cognito reference code",
   "repository": {
