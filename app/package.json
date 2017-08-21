@@ -1,0 +1,44 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "material-ui": "^0.18.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "react-tap-event-plugin": "^2.0.1",
+    "react-transition-group": "^1.2.0",
+    "redux": "^3.6.0",
+    "redux-form": "^6.7.0",
+    "redux-form-material-ui": "^4.2.0",
+    "redux-saga": "^0.15.3",
+    "validator": "^7.0.0",
+    "amazon-cognito-identity-js": "^1.19.0",
+    "aws-sdk": "^2.94.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-istanbul": "^3.0.0",
+    "esdoc": "^0.5.2",
+    "esdoc-node": "^1.0.2",
+    "esdoc-standard-plugin": "0.0.7",
+    "eslint": "^3.0.1",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-config-standard-react": "~4.2.0",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-react": "^6.0.0",
+    "eslint-plugin-standard": "^2.0.0",
+    "react-scripts": "1.0.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "server": "http-server build"
+  }
+}
