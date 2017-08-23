@@ -1,5 +1,7 @@
 # AWS Cognito React
 
+AWS Cognito React was written to provide a common base to add user authentication and eventually autherization to any web app. My long term goal is to develop this library into a common framework that lets developers work on app features from day 1 rather than getting bogged down with user authentication. The library uses AWS Cognito so there's no servers to setup. To customize AWS Cognito only requires one config change in the app code.
+
 ## Getting Started
 
 ````
@@ -9,6 +11,12 @@ npm run start
 ````
 
 The app uses [create-react-app](https://github.com/facebookincubator/create-react-app) as it's start kit
+
+## AWS Cognito Setup
+
+The AWS guide can be found [here](http://docs.aws.amazon.com/cognito/latest/developerguide/setting-up-the-javascript-sdk.html)
+
+Once your account is setup update the config file in src/components/Auth/Auth.js
 
 ## Description
 
