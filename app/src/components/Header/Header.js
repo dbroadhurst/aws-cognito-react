@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar'
+import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 
 import { Link } from 'react-router-dom'
@@ -29,18 +30,26 @@ export default class HeaderComponent extends React.Component {
       <div>
         <Toolbar>
           <ToolbarTitle text="Cognito" />
-          {this.props.isSignedIn !== state.AUTH_SUCCESS
-            ? <ToolbarGroup>
-                <FlatButton
+
+          <ToolbarGroup>
+            {this.props.isSignedIn !== state.AUTH_SUCCESS
+              ? <FlatButton
                   containerElement={<Link to="/signin" />}
                   label="Sign Up / Sign In"
                   onClick={this.signIn}
                 />
-              </ToolbarGroup>
-            : <ToolbarGroup>
-                {auth.info.username}
-                <FlatButton label="Sign Out" onClick={this.signOut} />
-              </ToolbarGroup>}
+              : <div>
+                  {auth.info.username}
+                  <FlatButton label="Sign Out" onClick={this.signOut} />
+                </div>}
+
+            <IconButton
+              href="https://github.com/dbroadhurst/aws-cognito-react"
+              target="_blank"
+            >
+              <img alt="github" width="28" src="GitHub-Mark-120px-plus.png" />
+            </IconButton>
+          </ToolbarGroup>
         </Toolbar>
       </div>
     )
