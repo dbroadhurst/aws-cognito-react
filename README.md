@@ -4,10 +4,17 @@ AWS Cognito React was written to provide a common base to add user authenticatio
 
 ## Getting Started
 
-````
+````bash
 git clone https://github.com/dbroadhurst/aws-cognito-react
 cd aws-cognito-react/app
+npm install
 npm run start
+````
+
+You browser should open at 
+
+````
+http://localhost:3000
 ````
 
 The app uses [create-react-app](https://github.com/facebookincubator/create-react-app) as it's start kit
@@ -33,4 +40,5 @@ You can find a working example [here](http://cognito.dbroadhurst.net)
 ![Signed In](https://s3-us-west-2.amazonaws.com/union25-public/cognito.png) 
 
 ## Roadmap
-Currently signin, signout, signup and confirmation are supported with other features to follow. Next will come change password
+Currently signin, signout, signup and confirmation are supported with other features to follow. Next I will ass change password followed by SMS confirmation
+
