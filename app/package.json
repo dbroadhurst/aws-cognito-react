@@ -1,13 +1,14 @@
 {
   "name": "aws-cognito-react",
   "version": "1.0.0",
-  "description": "aws cognito reference code",
+  "description": "AWS Conpgnito reference code",
   "repository": {
     "type": "git",
     "url": "https://github.com/dbroadhurst/aws-cognito-react"
   },
   "keywords": ["aws", "cognito", "users", "account", "react", "redux", "saga"],
   "author": "David Broadhurst",
+  "homepage": "http://cognito.dbroadhurst.net",
   "license": "MIT",
   "dependencies": {
     "material-ui": "^0.18.1",
