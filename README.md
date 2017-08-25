@@ -11,7 +11,7 @@ npm install
 npm run start
 ````
 
-Your browser should open at 
+Your browser will open at 
 
 ````
 http://localhost:3000
