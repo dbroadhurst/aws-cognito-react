@@ -6,5 +6,6 @@ phases:
       - cd app
       - npm install
       - npm run build
-
+      - zip -r aws-react-cognito.zip build
       
+
