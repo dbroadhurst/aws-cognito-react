@@ -8,4 +8,13 @@ phases:
       - npm run build
       - zip -r ../aws-react-cognito.zip build
 
+artifacts:
+  files:
+    build
+  base-directory:
+    app
+  
+
+
+
 
