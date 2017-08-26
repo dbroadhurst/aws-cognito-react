@@ -6,7 +6,8 @@ phases:
       - cd app
       - npm install
       - npm run build
-      - aws s3 build/**/* s3://cognito.dbroadhurst.net/ --recursive --acl public-read
+      - aws s3 rm s3://cognito.dbroadhurst.net --recursive
+      - aws s3 cp build s3://cognito.dbroadhurst.net --recursive --acl public-read
 
 artifacts:
   files:
