@@ -14,7 +14,7 @@ export const LandingComponent = () => {
   return (
     <div style={style.page}>
       <div style={style.layout}>
-        <div style={style.heading}>Landing Page1</div>
+        <div style={style.heading}>Landing Page</div>
       </div>
     </div>
   )
