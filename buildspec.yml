@@ -10,7 +10,7 @@ phases:
 
 artifacts:
   files:
-    build
+    app/build
   base-directory:
     app
   
