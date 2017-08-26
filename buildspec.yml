@@ -10,9 +10,7 @@ phases:
 
 artifacts:
   files:
-    app/build
-  base-directory:
-    app
+    aws-react-cognito.zip
   
 
 
