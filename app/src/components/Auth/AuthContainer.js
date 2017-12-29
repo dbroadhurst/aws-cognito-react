@@ -6,14 +6,14 @@ import AuthComponent from './Auth'
 
 const mapStatetoProps = state => {
   return {
-    isSignedIn: state.auth.signedIn
+    isSignedIn: state.auth.isSignedIn
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    signedIn: () => {
-      dispatch(reducer.signedIn())
+    getUser: () => {
+      dispatch(reducer.getUser())
     }
   }
 }

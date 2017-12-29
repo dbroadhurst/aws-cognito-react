@@ -76,7 +76,7 @@ class SignIn extends Component {
 
   componentDidUpdate() {
     if (this.props.auth.isSignedIn === state.AUTH_SUCCESS) {
-      this.props.history.push('/')
+      this.props.history.push('/protected')
     }
   }
 
@@ -105,20 +105,18 @@ class SignIn extends Component {
             floatingLabelText="Password"
           />
 
-          <div style={style.error}>
-            {auth.error && auth.error.message}
-          </div>
+          <div style={style.error}>{auth.error && auth.error.message}</div>
 
-          {auth.isConfirmed === state.AUTH_FAIL
-            ? <Field
-                style={style.button}
-                name="code"
-                validate={[required]}
-                component={TextField}
-                type="text"
-                floatingLabelText="Confirmation Code"
-              />
-            : null}
+          {auth.isConfirmed === state.AUTH_FAIL ? (
+            <Field
+              style={style.button}
+              name="code"
+              validate={[required]}
+              component={TextField}
+              type="text"
+              floatingLabelText="Confirmation Code"
+            />
+          ) : null}
 
           <RaisedButton
             style={style.signInButton}

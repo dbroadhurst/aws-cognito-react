@@ -1,10 +1,12 @@
 import React from 'react'
 import './App.css'
 import Landing from './components/Landing'
+import Protected from './components/Protected'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import Header from './components/Header'
 import Auth from './components/Auth'
+import PrivateRoute from './components/PrivateRoute'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -17,9 +19,10 @@ class App extends React.Component {
             <Auth />
             <Header />
             <Switch>
-              <Route exact path="/" component={Landing} />
+              <PrivateRoute path="/protected" component={Protected} />
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
+              <Route path="/" component={Landing} />
             </Switch>
           </div>
         </div>

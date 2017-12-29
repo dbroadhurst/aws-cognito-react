@@ -107,9 +107,7 @@ class SignUp extends Component {
           floatingLabelText="Password"
         />
 
-        <div style={style.error}>
-          {auth.error.message}
-        </div>
+        <div style={style.error}>{auth.error.message}</div>
 
         <RaisedButton
           style={style.signUpButton}
