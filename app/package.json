@@ -6,7 +6,15 @@
     "type": "git",
     "url": "https://github.com/dbroadhurst/aws-cognito-react"
   },
-  "keywords": ["aws", "cognito", "users", "account", "react", "redux", "saga"],
+  "keywords": [
+    "aws",
+    "cognito",
+    "users",
+    "account",
+    "react",
+    "redux",
+    "saga"
+  ],
   "author": "David Broadhurst",
   "homepage": "http://cognito.dbroadhurst.net",
   "license": "MIT",
