@@ -8,7 +8,7 @@ import Header from './components/Header'
 import Auth from './components/Auth'
 import PrivateRoute from './components/PrivateRoute'
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 class App extends React.Component {
   render() {
