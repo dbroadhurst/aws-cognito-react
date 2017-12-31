@@ -4,6 +4,8 @@ import Landing from './components/Landing'
 import Protected from './components/Protected'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
+import ResetPassword from './components/ResetPassword'
+import ChangePassword from './components/ChangePassword'
 import Header from './components/Header'
 import Auth from './components/Auth'
 import PrivateRoute from './components/PrivateRoute'
@@ -22,6 +24,8 @@ class App extends React.Component {
               <PrivateRoute path="/protected" component={Protected} />
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
+              <Route path="/resetpassword" component={ResetPassword} />
+              <Route path="/changepassword" component={ChangePassword} />
               <Route path="/" component={Landing} />
             </Switch>
           </div>

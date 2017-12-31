@@ -5,7 +5,7 @@ import validator from 'validator'
 
 import { TextField } from 'redux-form-material-ui'
 
-import { FlatButton, RaisedButton } from 'material-ui'
+import { FlatButton, RaisedButton, Paper } from 'material-ui'
 
 import { Link } from 'react-router-dom'
 
@@ -16,40 +16,44 @@ const email = value =>
   validator.isEmail(value) ? undefined : 'Not Valid Email'
 
 const style = {
+  paper: {
+    padding: '16px'
+  },
   layout: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '80vh'
+    height: 'calc(100vh - 56px)'
   },
   title: {
-    margin: '8px',
     fontSize: '32px',
     textAlign: 'center'
   },
   form: {
     width: '320px',
-    boxShadow: '2px 2px 5px rgb(80,80,80)',
     display: 'flex',
+    flexFlow: 'column',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   },
   signup: {
-    fontSize: '24px',
-    margin: '24px'
+    fontSize: '14px',
+    marginBottom: '16px'
   },
   signInButton: {
-    margin: '32px',
+    marginBottom: '16px',
     width: '80%'
   },
   button: {
     margin: '8px 0'
   },
   error: {
+    width: '80%',
     margin: '8px',
-    color: 'rgb(200,0,0)'
+    color: 'rgb(200,0,0)',
+    height: '32px'
   }
 }
 
@@ -84,55 +88,64 @@ class SignIn extends Component {
     const { handleSubmit, auth } = this.props
     return (
       <div style={style.layout}>
-        <form style={style.form}>
-          <div style={style.title}>Sign In</div>
+        <Paper style={style.paper} zDepth={5}>
+          <form style={style.form}>
+            <div style={style.title}>Sign In</div>
 
-          <Field
-            style={style.button}
-            name="email"
-            validate={[required, email]}
-            component={TextField}
-            type="email"
-            floatingLabelText="Username"
-          />
-
-          <Field
-            style={style.button}
-            name="password"
-            validate={[required]}
-            component={TextField}
-            type="password"
-            floatingLabelText="Password"
-          />
-
-          <div style={style.error}>{auth.error && auth.error.message}</div>
-
-          {auth.isConfirmed === state.AUTH_FAIL ? (
             <Field
               style={style.button}
-              name="code"
+              name="email"
+              validate={[required, email]}
+              component={TextField}
+              type="email"
+              floatingLabelText="Email"
+            />
+
+            <Field
+              style={style.button}
+              name="password"
               validate={[required]}
               component={TextField}
-              type="text"
-              floatingLabelText="Confirmation Code"
+              type="password"
+              floatingLabelText="Password"
             />
-          ) : null}
 
-          <RaisedButton
-            style={style.signInButton}
-            primary
-            onClick={handleSubmit(this.signIn)}
-          >
-            Sign In
-          </RaisedButton>
-        </form>
+            <div style={style.error}>{auth.error && auth.error.message}</div>
 
-        <FlatButton
-          style={style.signup}
-          containerElement={<Link to="/signup" />}
-        >
-          Sign Up
-        </FlatButton>
+            {auth.isConfirmed === state.AUTH_FAIL ? (
+              <Field
+                style={style.button}
+                name="code"
+                validate={[required]}
+                component={TextField}
+                type="text"
+                floatingLabelText="Confirmation Code"
+              />
+            ) : null}
+
+            <RaisedButton
+              style={style.signInButton}
+              primary
+              onClick={handleSubmit(this.signIn)}
+            >
+              Sign In
+            </RaisedButton>
+
+            <FlatButton
+              style={style.signup}
+              containerElement={<Link to="/signup" />}
+            >
+              Sign Up
+            </FlatButton>
+
+            <FlatButton
+              style={style.signup}
+              containerElement={<Link to="/resetpassword" />}
+            >
+              Forgot Password
+            </FlatButton>
+          </form>
+        </Paper>
       </div>
     )
   }

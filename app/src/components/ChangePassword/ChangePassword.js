@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
-import validator from 'validator'
-
-import { Link } from 'react-router-dom'
 
 import { TextField } from 'redux-form-material-ui'
 
@@ -11,17 +8,17 @@ import { RaisedButton, Paper } from 'material-ui'
 
 import { state } from 'aws-cognito-redux-saga'
 
+import validator from 'validator'
+
 const required = value => (value ? undefined : 'Required')
-const email = value =>
-  validator.isEmail(value) ? undefined : 'Not Valid Email'
 const passwordMatch = (value, values) =>
   values.password !== values.passwordMatch && 'Passwords must match'
 const minLength = value => (value.length >= 8 ? undefined : 'Min Length 8')
+const email = value =>
+  validator.isEmail(value) ? undefined : 'Not Valid Email'
 
 const style = {
-  paper: {
-    padding: '16px'
-  },
+  paper: { padding: '16px' },
   layout: {
     display: 'flex',
     flexDirection: 'column',
@@ -39,30 +36,26 @@ const style = {
     justifyContent: 'center',
     alignItems: 'center'
   },
-  signUpButton: {
-    margin: '32px',
+  button: {
+    margin: '16px',
     width: '80%'
   },
   field: {
     margin: '8px 32px'
   },
   error: {
+    width: '80%',
+    color: 'rgb(200,0,0)',
     margin: '8px',
-    color: 'rgb(200,0,0)'
-  },
-  validateTitle: {
-    margin: '8px 32px',
-    fontSize: '24px',
-    textAlign: 'center'
+    height: '32px'
   }
 }
 
-class SignUp extends Component {
+class ChangePassword extends Component {
   static propTypes = {
-    history: PropTypes.object.isRequired,
+    history: PropTypes.object,
     handleSubmit: PropTypes.func.isRequired,
-    signUp: PropTypes.func.isRequired,
-    signUpError: PropTypes.bool,
+    changePassword: PropTypes.func.isRequired,
     auth: PropTypes.object,
     init: PropTypes.func
   }
@@ -71,25 +64,42 @@ class SignUp extends Component {
     this.props.init()
   }
 
-  signUp = values => {
-    this.props.signUp(values.email.toLowerCase(), values.password)
+  changePassword = values => {
+    this.props.changePassword(
+      values.email.toLowerCase(),
+      values.code,
+      values.password
+    )
   }
 
-  signUpForm = () => {
+  signIn = () => {
+    this.props.history.push('/signin')
+  }
+
+  renderChangePassword() {
     const { handleSubmit, auth } = this.props
     return (
       <div style={style.layout}>
         <Paper style={style.paper} zDepth={5}>
           <form style={style.form}>
-            <div style={style.title}>Sign Up</div>
+            <div style={style.title}>Change Password</div>
 
             <Field
-              style={style.field}
+              style={style.button}
               name="email"
               validate={[required, email]}
               component={TextField}
               type="email"
               floatingLabelText="Email"
+            />
+
+            <Field
+              style={style.field}
+              name="code"
+              validate={[required]}
+              component={TextField}
+              type="string"
+              floatingLabelText="Code"
             />
 
             <Field
@@ -113,11 +123,11 @@ class SignUp extends Component {
             <div style={style.error}>{auth.error.message}</div>
 
             <RaisedButton
-              style={style.signUpButton}
-              onClick={handleSubmit(this.signUp)}
+              style={style.button}
+              onClick={handleSubmit(this.changePassword)}
               primary
             >
-              Sign Up
+              Change Password
             </RaisedButton>
           </form>
         </Paper>
@@ -125,23 +135,22 @@ class SignUp extends Component {
     )
   }
 
-  signedUp = () => {
+  renderSignIn() {
+    const { handleSubmit } = this.props
     return (
       <div style={style.layout}>
         <Paper style={style.paper} zDepth={5}>
-          <div style={style.form}>
-            <div style={style.validateTitle}>
-              A verification code has been emailed
-            </div>
+          <form style={style.form}>
+            <div style={style.title}>Password Changed</div>
 
             <RaisedButton
-              style={style.signUpButton}
-              containerElement={<Link to="/signin" />}
+              style={style.button}
+              onClick={handleSubmit(this.signIn)}
               primary
             >
               Sign In
             </RaisedButton>
-          </div>
+          </form>
         </Paper>
       </div>
     )
@@ -149,18 +158,13 @@ class SignUp extends Component {
 
   render() {
     const { auth } = this.props
-
-    return (
-      <div style={style.layout}>
-        {auth.hasSignedUp === state.AUTH_UNKNOWN
-          ? this.signUpForm()
-          : this.signedUp()}
-      </div>
-    )
+    return auth.hasChangedPassword === state.AUTH_SUCCESS
+      ? this.renderSignIn()
+      : this.renderChangePassword()
   }
 }
 
 // Decorate the form component
 export default reduxForm({
-  form: 'signUp'
-})(SignUp)
+  form: 'changePassword'
+})(ChangePassword)
