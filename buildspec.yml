@@ -3,7 +3,6 @@ version: 0.2
 phases:
   build:
     commands:
-      - cd app
       - npm install
       - npm run build
       - aws s3 rm s3://cognito.dbroadhurst.net --recursive
