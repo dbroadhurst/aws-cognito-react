@@ -1,6 +1,6 @@
 {
   "name": "aws-cognito-react",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "aws-cognito-react primary goal is to provide user management services for a web App in a scalable serverless way.",
   "repository": {
     "type": "git",
