@@ -10,5 +10,5 @@ phases:
 
 artifacts:
   files:
-    app/build/**/*
+    build/**/*
   
