@@ -30,10 +30,16 @@ export default class HeaderComponent extends React.Component {
       <div>
         <Toolbar>
           <ToolbarGroup>
-            <FlatButton
-              label="aws-cognito-react"
+            <IconButton
               href="https://github.com/dbroadhurst/aws-cognito-react"
               target="_blank"
+            >
+              <img alt="github" width="28" src="GitHub-Mark-120px-plus.png" />
+            </IconButton>
+
+            <FlatButton
+              label="aws-cognito-react"
+              containerElement={<Link to="/" />}
             />
           </ToolbarGroup>
 
@@ -50,13 +56,6 @@ export default class HeaderComponent extends React.Component {
                 <FlatButton label="Sign Out" onClick={this.signOut} />
               </div>
             )}
-
-            <IconButton
-              href="https://github.com/dbroadhurst/aws-cognito-react"
-              target="_blank"
-            >
-              <img alt="github" width="28" src="GitHub-Mark-120px-plus.png" />
-            </IconButton>
           </ToolbarGroup>
         </Toolbar>
       </div>
