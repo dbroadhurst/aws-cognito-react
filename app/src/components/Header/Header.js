@@ -32,7 +32,7 @@ export default class HeaderComponent extends React.Component {
           <ToolbarGroup>
             <FlatButton
               label="aws-cognito-react"
-              href="https://www.npmjs.com/package/aws-cognito-react"
+              href="https://github.com/dbroadhurst/aws-cognito-react"
               target="_blank"
             />
           </ToolbarGroup>
