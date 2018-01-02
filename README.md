@@ -14,8 +14,8 @@ aws-cognito-react primary goal is to provide user management services for a web 
 
 ```bash
 git clone git@github.com:dbroadhurst/aws-cognito-react.git
+cd aws-cognito-react
 npm install
-cd aws-cognito-react/app
 npm run start
 ```
 
@@ -27,11 +27,11 @@ http://localhost:3000
 
 ## AWS Cognito Setup
 
-Once your account is setup update the config file in src/components/Auth/Auth.js
+Once your AWS Cognito account is setup update the config file in src/components/Auth/Auth.js
 
 ## Description
 
-My original idea was to provide user management as a package but it became clear adding user management to an existing project is tricky. If you are in the position where you need to retro fit user management to an existing project then this project will help but the cleanest path is to start with this project as a boilerplate. The project has been setup using create react app which is currently the most robust way to setup a react project.
+My original idea was to provide user management as a package but it became clear adding user management to an existing project is tricky. If you are in the position where you need to retro fit user management into an existing project then this project will help but the cleanest path is to start with this project as a boilerplate. The project has been setup using create react app which is currently the most robust way to setup a react project.
 
 The stack has 3 layers that help provide an opportunity to extend and even replace sections of the stack.
 
