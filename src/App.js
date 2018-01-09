@@ -8,6 +8,7 @@ import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import ResetPassword from './components/ResetPassword'
 import ChangePassword from './components/ChangePassword'
+import ForceChangePassword from './components/ForceChangePassword'
 import Header from './components/Header'
 import Auth from './components/Auth'
 import PrivateRoute from './components/PrivateRoute'
@@ -35,6 +36,10 @@ class App extends React.Component {
               <Route path="/signup" component={SignUp} />
               <Route path="/resetpassword" component={ResetPassword} />
               <Route path="/changepassword" component={ChangePassword} />
+              <Route
+                path="/forcechangepassword"
+                component={ForceChangePassword}
+              />
               <Route path="/landing" component={Landing} />
 
               <Route

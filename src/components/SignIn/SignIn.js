@@ -66,6 +66,12 @@ class SignIn extends Component {
     history: PropTypes.object
   }
 
+  constructor(props) {
+    super(props)
+
+    this.passwordReset = this.passwordReset.bind(this)
+  }
+
   componentWillMount() {
     this.props.init()
   }
@@ -84,7 +90,33 @@ class SignIn extends Component {
     }
   }
 
-  render() {
+  passwordReset() {
+    this.props.history.push('/forcechangepassword')
+  }
+
+  renderPasswordReset() {
+    const { handleSubmit } = this.props
+
+    return (
+      <div style={style.layout}>
+        <Paper style={style.paper} zDepth={5}>
+          <form style={style.form}>
+            <div style={style.title}>Change Password</div>
+
+            <RaisedButton
+              style={style.signInButton}
+              primary
+              onClick={handleSubmit(this.passwordReset)}
+            >
+              Reset Password
+            </RaisedButton>
+          </form>
+        </Paper>
+      </div>
+    )
+  }
+
+  renderSignIn() {
     const { handleSubmit, auth } = this.props
     return (
       <div style={style.layout}>
@@ -148,6 +180,15 @@ class SignIn extends Component {
         </Paper>
       </div>
     )
+  }
+
+  render() {
+    const { auth } = this.props
+    if (auth.passwordResetRequired === state.AUTH_SUCCESS) {
+      return this.renderPasswordReset()
+    } else {
+      return this.renderSignIn()
+    }
   }
 }
 
