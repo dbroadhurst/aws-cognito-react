@@ -19,8 +19,8 @@
   "homepage": "http://cognito.dbroadhurst.net",
   "license": "MIT",
   "dependencies": {
-    "aws-cognito-redux-saga": "^1.5.3",
-    "aws-sdk": "^2.94.0",
+    "aws-cognito-redux-saga": "^1.5.7",
+    "aws-sdk": "^2.178.0",
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -30,7 +30,7 @@
     "react-tap-event-plugin": "^3.0.2",
     "redux": "^3.6.0",
     "redux-form": "^7.2.0",
-    "redux-form-material-ui": "^4.2.0",
+    "redux-form-material-ui": "^4.3.2",
     "redux-saga": "^0.16.0",
     "validator": "^9.2.0"
   },
