@@ -55,7 +55,7 @@ export class ProtectedComponent extends React.Component {
         <div style={style.layout}>
           <div style={style.heading}>Protected Page</div>
 
-          {this.props.isSignedIn === state.AUTH_SUCCESS
+          {auth.isSignedIn === state.AUTH_SUCCESS
             ? this.renderAuthInfo(auth)
             : null}
         </div>

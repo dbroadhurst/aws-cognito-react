@@ -6,17 +6,16 @@ import { state } from 'aws-cognito-redux-saga'
 
 class PrivateRoute extends React.Component {
   static propTypes = {
-    component: PropTypes.func,
     auth: PropTypes.object
   }
 
   render() {
-    let isSignedIn = this.props.auth.isSignedIn
+    let { auth } = this.props
 
     return (
       <Route
         render={() => {
-          return isSignedIn !== state.AUTH_FAIL ? (
+          return auth.isSignedIn !== state.AUTH_FAIL ? (
             <this.props.component />
           ) : (
             <Redirect to="/landing" />

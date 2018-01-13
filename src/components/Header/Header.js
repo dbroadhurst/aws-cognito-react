@@ -44,7 +44,7 @@ export default class HeaderComponent extends React.Component {
           </ToolbarGroup>
 
           <ToolbarGroup>
-            {this.props.isSignedIn !== state.AUTH_SUCCESS ? (
+            {auth.isSignedIn !== state.AUTH_SUCCESS ? (
               <FlatButton
                 containerElement={<Link to="/signin" />}
                 label="Sign Up / Sign In"

@@ -6,8 +6,6 @@ import SignUpComponent from './SignUp'
 
 const mapStatetoProps = state => {
   return {
-    isSignedIn: state.auth.signedIn,
-    signUpError: state.auth.signUpError,
     auth: state.auth
   }
 }

@@ -4,7 +4,6 @@ import PrivateRouteComponent from './PrivateRoute'
 
 const mapStatetoProps = state => {
   return {
-    isSignedIn: state.auth.isSignedIn,
     auth: state.auth
   }
 }

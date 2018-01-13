@@ -62,7 +62,6 @@ class SignUp extends Component {
     history: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     signUp: PropTypes.func.isRequired,
-    signUpError: PropTypes.bool,
     auth: PropTypes.object,
     init: PropTypes.func
   }

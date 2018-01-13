@@ -5,8 +5,7 @@ import { config } from 'aws-cognito-redux-saga'
 
 class Auth extends React.Component {
   static propTypes = {
-    getUser: PropTypes.func,
-    isSignedIn: PropTypes.string
+    getUser: PropTypes.func
   }
 
   componentWillMount() {

@@ -5,9 +5,7 @@ import { reducer } from 'aws-cognito-redux-saga'
 import AuthComponent from './Auth'
 
 const mapStatetoProps = state => {
-  return {
-    isSignedIn: state.auth.isSignedIn
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {

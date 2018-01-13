@@ -6,7 +6,6 @@ import ForceChangePasswordComponent from './ForceChangePassword'
 
 const mapStatetoProps = state => {
   return {
-    hasChangedPassword: state.auth.hasChangedPassword,
     auth: state.auth
   }
 }

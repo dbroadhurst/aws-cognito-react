@@ -6,7 +6,6 @@ import HeaderComponent from './Header'
 
 const mapStatetoProps = state => {
   return {
-    isSignedIn: state.auth.isSignedIn,
     auth: state.auth
   }
 }
