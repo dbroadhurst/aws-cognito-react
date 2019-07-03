@@ -12,7 +12,6 @@ import createSagaMiddleware from 'redux-saga'
 import sagas from './sagas'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import { blue800, amber50 } from 'material-ui/styles/colors'
@@ -44,8 +43,6 @@ const store = createStore(
 )
 
 sagaMiddleware.run(sagas)
-
-injectTapEventPlugin()
 
 ReactDOM.render(
   <MuiThemeProvider muiTheme={muiTheme}>
