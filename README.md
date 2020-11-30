@@ -15,6 +15,7 @@ Reference implementation / boilerplate for AWS Cognito user management
 - Updated to Material UI 4x
 - Added AWS CDK to manage infastructure
 - Cleaner and simplier Architecture
+- Responsive design
 
 ## AWS Cognito Infastructure setup
 
