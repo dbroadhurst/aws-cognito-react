@@ -1,0 +1,72 @@
+{
+  "name": "aws-cognito-react",
+  "version": "2.0.0",
+  "description": "aws-cognito-react primary goal is to provide user management services for a web App in a scalable serverless way.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbroadhurst/aws-cognito-react"
+  },
+  "keywords": [
+    "aws",
+    "cognito",
+    "users",
+    "account",
+    "react",
+    "redux",
+    "saga"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.11.1",
+    "@material-ui/icons": "^4.9.1",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.2",
+    "@types/jest": "^26.0.15",
+    "@types/material-ui": "^0.21.8",
+    "@types/node": "^12.19.7",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/yup": "^0.29.9",
+    "amazon-cognito-identity-js": "^4.5.5",
+    "aws-sdk": "^2.799.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "typescript": "^4.1.2",
+    "web-vitals": "^0.2.4",
+    "yup": "^0.31.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write '**/*.{js,ts,tsx}' '!**/lib/**' --config .prettierrc --ignore-path .prettierignore",
+    "eslint": "eslint . --ext ts --fix --max-warnings=1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "prettier": "^2.2.0"
+  }
+}

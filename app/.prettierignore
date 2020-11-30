@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+.VSCodeCounter/
+
+node_modules/
+
+.nyc/
+.nyc_output/
+
+*.pem
+*.log
+*.error*
