@@ -1,5 +1,7 @@
 # V2 aws-cognito-react
 
+![signin](./logo.png)
+
 If you are looking for v1 version it can be found on the legacy branch. With the release of v2, v1 is no longer supported
 
 Reference implementation / boilerplate for AWS Cognito user management
@@ -25,5 +27,7 @@ Coming soon
 ## Useful References
 
 <https://www.npmjs.com/package/amazon-cognito-identity-js>
+
 <https://docs.aws.amazon.com/cdk/api/latest/docs/aws-cognito-readme.html>
+
 <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-social-idp.html>
