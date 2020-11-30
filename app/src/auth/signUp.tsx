@@ -54,7 +54,7 @@ const SignUp: React.FunctionComponent<{}> = () => {
       await authContext.signUpWithEmail(username, email, password)
       setCreated(true)
     } catch (err) {
-      setError('Email / Username already used')
+      setError(err.message)
     }
   }
 

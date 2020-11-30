@@ -43,7 +43,7 @@ const SignIn: React.FunctionComponent<{}> = () => {
       if (err.code === 'UserNotConfirmedException') {
         history.push('verify')
       } else {
-        setError('Invalid email or password')
+        setError(err.message)
       }
     }
   }
@@ -74,13 +74,14 @@ const SignIn: React.FunctionComponent<{}> = () => {
                   <Typography className={classes.hover} variant="body2">
                     Forgot Password?
                   </Typography>
-                  <Box mt={2}>
-                    <Typography color="error" variant="body2">
-                      {error}
-                    </Typography>
-                  </Box>
                 </Box>
               </Grid>
+            </Box>
+
+            <Box mt={2}>
+              <Typography color="error" variant="body2">
+                {error}
+              </Typography>
             </Box>
 
             {/* Buttons */}
