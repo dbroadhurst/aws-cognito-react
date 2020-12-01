@@ -129,7 +129,6 @@ export async function setAttribute(attribute: any) {
     const res = new CognitoUserAttribute(attribute)
     attributeList.push(res)
 
-    console.log(attribute)
     currentUser.updateAttributes(attributeList, (err: any, res: any) => {
       if (err) {
         reject(err)
