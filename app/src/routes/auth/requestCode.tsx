@@ -9,9 +9,9 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 
-import { Username, useValidUsername } from './components'
+import { Username, useValidUsername } from '../../auth/components'
 
-import { AuthContext } from './authContext'
+import { AuthContext } from '../../contexts/authContext'
 
 const useStyles = makeStyles({
   root: {
@@ -53,7 +53,7 @@ export default function RequestCode() {
         <Typography className={classes.text} variant="h5">{`Reset Code Sent to ${username}`}</Typography>
       </Box>
       <Box mt={4}>
-        <Button onClick={() => history.push('changepassword')} color="primary" variant="contained">
+        <Button onClick={() => history.push('forgotpassword')} color="primary" variant="contained">
           Reset Password
         </Button>
       </Box>

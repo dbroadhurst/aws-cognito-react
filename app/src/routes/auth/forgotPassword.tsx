@@ -8,11 +8,10 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
-import EmailIcon from '@material-ui/icons/Email'
 
-import { Email, useValidEmail, Password, useValidPassword, Username, useValidUsername } from './components'
+import { Code, useValidCode, Password, useValidPassword, Username, useValidUsername } from '../../auth/components'
 
-import { AuthContext } from './authContext'
+import { AuthContext } from '../../contexts/authContext'
 
 const useStyles = makeStyles({
   root: {
@@ -20,14 +19,14 @@ const useStyles = makeStyles({
   },
 })
 
-const SignUp: React.FunctionComponent<{}> = () => {
+export default function ForgotPassword() {
   const classes = useStyles()
 
-  const { email, setEmail, emailIsValid } = useValidEmail('')
+  const { code, setCode, codeIsValid } = useValidCode('')
   const { password, setPassword, passwordIsValid } = useValidPassword('')
   const { username, setUsername, usernameIsValid } = useValidUsername('')
   const [error, setError] = useState('')
-  const [created, setCreated] = useState(false)
+  const [reset, setReset] = useState(false)
 
   const {
     password: passwordConfirm,
@@ -36,8 +35,8 @@ const SignUp: React.FunctionComponent<{}> = () => {
   } = useValidPassword('')
 
   const isValid =
-    !emailIsValid ||
-    email.length === 0 ||
+    !codeIsValid ||
+    code.length === 0 ||
     !usernameIsValid ||
     username.length === 0 ||
     !passwordIsValid ||
@@ -49,19 +48,19 @@ const SignUp: React.FunctionComponent<{}> = () => {
 
   const authContext = useContext(AuthContext)
 
-  const signInClicked = async () => {
+  const resetPassword = async () => {
     try {
-      await authContext.signUpWithEmail(username, email, password)
-      setCreated(true)
+      await authContext.forgotPassword(username, code, password)
+      setReset(true)
     } catch (err) {
       setError(err.message)
     }
   }
 
-  const signUp = (
+  const updatePassword = (
     <>
       <Box width="80%" m={1}>
-        <Email emailIsValid={emailIsValid} setEmail={setEmail} />
+        <Code codeIsValid={codeIsValid} setCode={setCode} />
       </Box>
       <Box width="80%" m={1}>
         <Username usernameIsValid={usernameIsValid} setUsername={setUsername} />
@@ -72,6 +71,8 @@ const SignUp: React.FunctionComponent<{}> = () => {
       <Box width="80%" m={1}>
         <Password passwordIsValid={passwordConfirmIsValid} setPassword={setPasswordConfirm} />
       </Box>
+
+      {/* Error */}
       <Box mt={2}>
         <Typography color="error" variant="body2">
           {error}
@@ -87,8 +88,8 @@ const SignUp: React.FunctionComponent<{}> = () => {
             </Button>
           </Box>
           <Box m={1}>
-            <Button disabled={isValid} color="primary" variant="contained" onClick={signInClicked}>
-              Sign Up
+            <Button disabled={isValid} color="primary" variant="contained" onClick={resetPassword}>
+              Change Password
             </Button>
           </Box>
         </Grid>
@@ -96,14 +97,13 @@ const SignUp: React.FunctionComponent<{}> = () => {
     </>
   )
 
-  const accountCreated = (
+  const passwordReset = (
     <>
-      <Typography variant="h5">{`Created ${username} account`}</Typography>
-      <Typography variant="h6">{`Verfiy Code sent to ${email}`}</Typography>
+      <Typography variant="h5">{`Password Reset`}</Typography>
 
       <Box m={4}>
-        <Button onClick={() => history.push('/verify')} color="primary" variant="contained">
-          Send Code
+        <Button onClick={() => history.push('/signin')} color="primary" variant="contained">
+          Sign In
         </Button>
       </Box>
     </>
@@ -117,19 +117,14 @@ const SignUp: React.FunctionComponent<{}> = () => {
             {/* Title */}
             <Box m={3}>
               <Grid container direction="row" justify="center" alignItems="center">
-                <Box mr={1} mt={1}>
-                  <EmailIcon fontSize="large" />
-                </Box>
-                <Typography variant="h3">Sign Up</Typography>
+                <Typography variant="h3">Forgot Password</Typography>
               </Grid>
             </Box>
 
-            {!created ? signUp : accountCreated}
+            {!reset ? updatePassword : passwordReset}
           </Grid>
         </Paper>
       </Grid>
     </Grid>
   )
 }
-
-export default SignUp

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 
-import * as cognito from './cognito'
+import * as cognito from '../libs/cognito'
 
 export enum AuthStatus {
   Loading,
@@ -10,6 +10,7 @@ export enum AuthStatus {
 
 export interface IAuth {
   userInfo?: { username?: string; email?: string; sub?: string; accessToken?: string; refreshToken?: string }
+  attrInfo?: any
   authStatus?: AuthStatus
   signInWithEmail?: any
   signUpWithEmail?: any
@@ -17,7 +18,10 @@ export interface IAuth {
   verifyCode?: any
   getSession?: any
   sendCode?: any
+  forgotPassword?: any
   changePassword?: any
+  getAttributes?: any
+  setAttribute?: any
 }
 
 const defaultState: IAuth = {
@@ -42,28 +46,29 @@ export const AuthIsNotSignedIn: React.FunctionComponent = ({ children }) => {
 const AuthProvider: React.FunctionComponent = ({ children }) => {
   const [authStatus, setAuthStatus] = useState(AuthStatus.Loading)
   const [userInfo, setUserInfo] = useState({})
+  const [attrInfo, setAttrInfo] = useState([])
 
   useEffect(() => {
     async function getSessionInfo() {
-      const session: any = await getSession()
-      const { email, sub } = session.idToken.payload
-      setUserInfo({
-        email,
-        sub,
-        username: session.idToken.payload['cognito:username'],
-        accessToken: session.accessToken.jwtToken,
-        refreshToken: session.refreshToken.token,
-      })
-      setAuthStatus(AuthStatus.SignedIn)
-      return session
+      try {
+        const session: any = await getSession()
+        const { email, sub } = session.idToken.payload
+        setUserInfo({
+          email,
+          sub,
+          username: session.idToken.payload['cognito:username'],
+          accessToken: session.accessToken.jwtToken,
+          refreshToken: session.refreshToken.token,
+        })
+        await setAttribute({ Name: 'website', Value: 'https://github.com/dbroadhurst/aws-cognito-react' })
+        const attr: any = await getAttributes()
+        setAttrInfo(attr)
+        setAuthStatus(AuthStatus.SignedIn)
+      } catch (err) {
+        setAuthStatus(AuthStatus.SignedOut)
+      }
     }
-
-    const currentUser = cognito.getCurrentUser()
-    if (currentUser) {
-      getSessionInfo()
-    } else {
-      setAuthStatus(AuthStatus.SignedOut)
-    }
+    getSessionInfo()
   }, [setAuthStatus, authStatus])
 
   if (authStatus === AuthStatus.Loading) {
@@ -110,6 +115,24 @@ const AuthProvider: React.FunctionComponent = ({ children }) => {
     }
   }
 
+  async function getAttributes() {
+    try {
+      const attr = await cognito.getAttributes()
+      return attr
+    } catch (err) {
+      throw err
+    }
+  }
+
+  async function setAttribute(attr: any) {
+    try {
+      const res = await cognito.setAttribute(attr)
+      return res
+    } catch (err) {
+      throw err
+    }
+  }
+
   async function sendCode(username: string) {
     try {
       await cognito.sendCode(username)
@@ -118,9 +141,17 @@ const AuthProvider: React.FunctionComponent = ({ children }) => {
     }
   }
 
-  async function changePassword(username: string, code: string, password: string) {
+  async function forgotPassword(username: string, code: string, password: string) {
     try {
-      await cognito.changePassword(username, code, password)
+      await cognito.forgotPassword(username, code, password)
+    } catch (err) {
+      throw err
+    }
+  }
+
+  async function changePassword(oldPassword: string, newPassword: string) {
+    try {
+      await cognito.changePassword(oldPassword, newPassword)
     } catch (err) {
       throw err
     }
@@ -129,13 +160,17 @@ const AuthProvider: React.FunctionComponent = ({ children }) => {
   const state: IAuth = {
     authStatus,
     userInfo,
+    attrInfo,
     signUpWithEmail,
     signInWithEmail,
     signOut,
     verifyCode,
     getSession,
     sendCode,
+    forgotPassword,
     changePassword,
+    getAttributes,
+    setAttribute,
   }
 
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>

@@ -9,9 +9,9 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 
-import { Code, useValidCode, Username, useValidUsername } from './components'
+import { Code, useValidCode, Username, useValidUsername } from '../../auth/components'
 
-import { AuthContext } from './authContext'
+import { AuthContext } from '../../contexts/authContext'
 
 const useStyles = makeStyles({
   root: {

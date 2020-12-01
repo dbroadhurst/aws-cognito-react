@@ -9,9 +9,9 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 
-import { Code, useValidCode, Password, useValidPassword, Username, useValidUsername } from './components'
+import { Password, useValidPassword } from '../../auth/components'
 
-import { AuthContext } from './authContext'
+import { AuthContext } from '../../contexts/authContext'
 
 const useStyles = makeStyles({
   root: {
@@ -22,35 +22,26 @@ const useStyles = makeStyles({
 export default function ChangePassword() {
   const classes = useStyles()
 
-  const { code, setCode, codeIsValid } = useValidCode('')
-  const { password, setPassword, passwordIsValid } = useValidPassword('')
-  const { username, setUsername, usernameIsValid } = useValidUsername('')
   const [error, setError] = useState('')
   const [reset, setReset] = useState(false)
 
-  const {
-    password: passwordConfirm,
-    setPassword: setPasswordConfirm,
-    passwordIsValid: passwordConfirmIsValid,
-  } = useValidPassword('')
+  const { password: oldPassword, setPassword: setOldPassword, passwordIsValid: oldPasswordIsValid } = useValidPassword(
+    ''
+  )
 
-  const isValid =
-    !codeIsValid ||
-    code.length === 0 ||
-    !usernameIsValid ||
-    username.length === 0 ||
-    !passwordIsValid ||
-    password.length === 0 ||
-    !passwordConfirmIsValid ||
-    passwordConfirm.length === 0
+  const { password: newPassword, setPassword: setNewPassword, passwordIsValid: newPasswordIsValid } = useValidPassword(
+    ''
+  )
+
+  const isValid = !oldPasswordIsValid || oldPassword.length === 0 || !newPasswordIsValid || newPassword.length === 0
 
   const history = useHistory()
 
   const authContext = useContext(AuthContext)
 
-  const resetPassword = async () => {
+  const changePassword = async () => {
     try {
-      await authContext.changePassword(username, code, password)
+      await authContext.changePassword(oldPassword, newPassword)
       setReset(true)
     } catch (err) {
       setError(err.message)
@@ -60,17 +51,12 @@ export default function ChangePassword() {
   const updatePassword = (
     <>
       <Box width="80%" m={1}>
-        <Code codeIsValid={codeIsValid} setCode={setCode} />
+        <Password passwordIsValid={oldPasswordIsValid} setPassword={setOldPassword} />
       </Box>
       <Box width="80%" m={1}>
-        <Username usernameIsValid={usernameIsValid} setUsername={setUsername} />
+        <Password passwordIsValid={newPasswordIsValid} setPassword={setNewPassword} />
       </Box>
-      <Box width="80%" m={1}>
-        <Password passwordIsValid={passwordIsValid} setPassword={setPassword} />
-      </Box>
-      <Box width="80%" m={1}>
-        <Password passwordIsValid={passwordConfirmIsValid} setPassword={setPasswordConfirm} />
-      </Box>
+      {/* Error */}
       <Box mt={2}>
         <Typography color="error" variant="body2">
           {error}
@@ -86,7 +72,7 @@ export default function ChangePassword() {
             </Button>
           </Box>
           <Box m={1}>
-            <Button disabled={isValid} color="primary" variant="contained" onClick={resetPassword}>
+            <Button disabled={isValid} color="primary" variant="contained" onClick={changePassword}>
               Change Password
             </Button>
           </Box>
@@ -97,10 +83,10 @@ export default function ChangePassword() {
 
   const passwordReset = (
     <>
-      <Typography variant="h5">{`Password Reset`}</Typography>
+      <Typography variant="h5">{`Password Changed`}</Typography>
 
       <Box m={4}>
-        <Button onClick={() => history.push('/signin')} color="primary" variant="contained">
+        <Button onClick={() => history.push('signin')} color="primary" variant="contained">
           Sign In
         </Button>
       </Box>

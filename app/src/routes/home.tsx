@@ -11,12 +11,10 @@ import Button from '@material-ui/core/Button'
 
 import logoImage from './logo.png'
 
-import { AuthContext } from '../auth/authContext'
+import { AuthContext } from '../contexts/authContext'
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // height: '100vh',
-  },
+  root: {},
   title: {
     textAlign: 'center',
   },
@@ -26,42 +24,62 @@ const useStyles = makeStyles((theme) => ({
     overflowWrap: 'break-word',
     fontSize: '16px',
   },
+  hero: {
+    width: '100%',
+    background: 'rgb(220,220,220)',
+  },
 }))
 
-const Home: React.FunctionComponent = () => {
+export default function Home() {
   const classes = useStyles()
 
   const history = useHistory()
 
   const auth = useContext(AuthContext)
 
-  const signOutClicked = () => {
+  function signOutClicked() {
     auth.signOut()
-    history.push('/landing')
+    history.push('landing')
+  }
+
+  function changePasswordClicked() {
+    history.push('changepassword')
   }
 
   return (
     <Grid container>
       <Grid className={classes.root} container direction="column" justify="center" alignItems="center">
-        <Box m={2}>
-          <img src={logoImage} width={224} height={224} alt="logo" />
+        <Box className={classes.hero} p={4}>
+          <Grid className={classes.root} container direction="column" justify="center" alignItems="center">
+            <Box m={2}>
+              <img src={logoImage} width={224} height={224} alt="logo" />
+            </Box>
+            <Box m={2}>
+              <Typography className={classes.title} variant="h2">
+                AWS Cognito Starter Home
+              </Typography>
+            </Box>
+            <Box m={2}>
+              <Button onClick={signOutClicked} variant="contained" color="primary">
+                Sign Out
+              </Button>
+            </Box>
+            <Box m={2}>
+              <Button onClick={changePasswordClicked} variant="contained" color="primary">
+                Change Password
+              </Button>
+            </Box>
+          </Grid>
         </Box>
         <Box m={2}>
-          <Typography className={classes.title} variant="h1">
-            AWS Cognito Starter Home
-          </Typography>
-        </Box>
-        <Box m={2}>
-          <Button onClick={signOutClicked} variant="contained" color="primary">
-            SIGN Out
-          </Button>
-        </Box>
-        <Box m={2}>
+          <Typography variant="h5">UserInfo</Typography>
           <pre className={classes.session}>{JSON.stringify(auth.userInfo, null, 2)}</pre>
+        </Box>
+        <Box m={2}>
+          <Typography variant="h5">UserAttributes</Typography>
+          <pre className={classes.session}>{JSON.stringify(auth.attrInfo, null, 2)}</pre>
         </Box>
       </Grid>
     </Grid>
   )
 }
-
-export default Home

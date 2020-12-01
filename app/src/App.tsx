@@ -6,13 +6,14 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import { createMuiTheme, ThemeProvider, responsiveFontSizes } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-import AuthProvider, { AuthIsSignedIn, AuthIsNotSignedIn } from './auth/authContext'
+import AuthProvider, { AuthIsSignedIn, AuthIsNotSignedIn } from './contexts/authContext'
 
-import SignIn from './auth/signIn'
-import SignUp from './auth/signUp'
-import VerifyCode from './auth/verify'
-import RequestCode from './auth/requestCode'
-import ChangePassword from './auth/changePassword'
+import SignIn from './routes/auth/signIn'
+import SignUp from './routes/auth/signUp'
+import VerifyCode from './routes/auth/verify'
+import RequestCode from './routes/auth/requestCode'
+import ForgotPassword from './routes/auth/forgotPassword'
+import ChangePassword from './routes/auth/changePassword'
 import Landing from './routes/landing'
 import Home from './routes/home'
 
@@ -37,7 +38,7 @@ const SignInRoute: React.FunctionComponent = () => (
       <Route path="/signup" component={SignUp} />
       <Route path="/verify" component={VerifyCode} />
       <Route path="/requestcode" component={RequestCode} />
-      <Route path="/changePassword" component={ChangePassword} />
+      <Route path="/forgotpassword" component={ForgotPassword} />
       <Route path="/" component={Landing} />
     </Switch>
   </Router>
@@ -46,6 +47,7 @@ const SignInRoute: React.FunctionComponent = () => (
 const MainRoute: React.FunctionComponent = () => (
   <Router>
     <Switch>
+      <Route path="/changepassword" component={ChangePassword} />
       <Route path="/" component={Home} />
     </Switch>
   </Router>

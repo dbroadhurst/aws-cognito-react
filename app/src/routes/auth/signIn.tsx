@@ -9,9 +9,9 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 
-import { Password, useValidPassword, Username, useValidUsername } from './components'
+import { Password, useValidPassword, Username, useValidUsername } from '../../auth/components'
 
-import { AuthContext } from './authContext'
+import { AuthContext } from '../../contexts/authContext'
 
 const useStyles = makeStyles({
   root: {
@@ -78,6 +78,7 @@ const SignIn: React.FunctionComponent<{}> = () => {
               </Grid>
             </Box>
 
+            {/* Error */}
             <Box mt={2}>
               <Typography color="error" variant="body2">
                 {error}
