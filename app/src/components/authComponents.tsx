@@ -2,7 +2,7 @@ import React from 'react'
 
 import TextField from '@material-ui/core/TextField'
 
-export const Email: React.FunctionComponent<{ emailIsValid: boolean; setEmail: any }> = ({
+export const Email: React.FunctionComponent<{ emailIsValid: boolean; setEmail: (_: string) => void }> = ({
   emailIsValid,
   setEmail,
 }) => {
@@ -19,7 +19,7 @@ export const Email: React.FunctionComponent<{ emailIsValid: boolean; setEmail: a
   )
 }
 
-export const Password: React.FunctionComponent<{ passwordIsValid: boolean; setPassword: any }> = ({
+export const Password: React.FunctionComponent<{ passwordIsValid: boolean; setPassword: (_: string) => void }> = ({
   passwordIsValid,
   setPassword,
 }) => {
@@ -36,7 +36,7 @@ export const Password: React.FunctionComponent<{ passwordIsValid: boolean; setPa
   )
 }
 
-export const Username: React.FunctionComponent<{ usernameIsValid: boolean; setUsername: any }> = ({
+export const Username: React.FunctionComponent<{ usernameIsValid: boolean; setUsername: (_: string) => void }> = ({
   usernameIsValid,
   setUsername,
 }) => {
@@ -53,7 +53,10 @@ export const Username: React.FunctionComponent<{ usernameIsValid: boolean; setUs
   )
 }
 
-export const Code: React.FunctionComponent<{ codeIsValid: boolean; setCode: any }> = ({ codeIsValid, setCode }) => {
+export const Code: React.FunctionComponent<{ codeIsValid: boolean; setCode: (_: string) => void }> = ({
+  codeIsValid,
+  setCode,
+}) => {
   return (
     <TextField
       fullWidth
