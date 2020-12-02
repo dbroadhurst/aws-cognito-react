@@ -1,4 +1,4 @@
-# V2 aws-cognito-react
+# aws-cognito-react - v2
 
 ![signin](./logo.png)
 
@@ -8,6 +8,7 @@ Reference implementation / boilerplate for AWS Cognito user management
 
 ## v2 Changes
 
+- Switched to Typscript
 - Replaced redux and saga's with react context
 - Upgraded all libraries to latest major versions
 - No security scan issues

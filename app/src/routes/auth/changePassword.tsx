@@ -9,7 +9,8 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 
-import { Password, useValidPassword } from '../../auth/components'
+import { useValidPassword } from '../../hooks/useAuthHooks'
+import { Password } from '../../components/authComponents'
 
 import { AuthContext } from '../../contexts/authContext'
 
