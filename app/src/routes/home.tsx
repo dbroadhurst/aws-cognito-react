@@ -41,7 +41,7 @@ export default function Home() {
 
   function signOutClicked() {
     auth.signOut()
-    history.push('landing')
+    history.push('/')
   }
 
   function changePasswordClicked() {
@@ -81,11 +81,11 @@ export default function Home() {
           </Grid>
         </Box>
         <Box m={2}>
-          <Typography variant="h5">UserInfo</Typography>
-          <pre className={classes.session}>{JSON.stringify(auth.userInfo, null, 2)}</pre>
+          <Typography variant="h5">Session Info</Typography>
+          <pre className={classes.session}>{JSON.stringify(auth.sessionInfo, null, 2)}</pre>
         </Box>
         <Box m={2}>
-          <Typography variant="h5">UserAttributes</Typography>
+          <Typography variant="h5">User Attributes</Typography>
           <pre className={classes.session}>{JSON.stringify(auth.attrInfo, null, 2)}</pre>
         </Box>
       </Grid>

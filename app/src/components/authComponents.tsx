@@ -19,15 +19,16 @@ export const Email: React.FunctionComponent<{ emailIsValid: boolean; setEmail: (
   )
 }
 
-export const Password: React.FunctionComponent<{ passwordIsValid: boolean; setPassword: (_: string) => void }> = ({
-  passwordIsValid,
-  setPassword,
-}) => {
+export const Password: React.FunctionComponent<{
+  label: string
+  passwordIsValid: boolean
+  setPassword: (_: string) => void
+}> = ({ label, passwordIsValid, setPassword }) => {
   return (
     <TextField
       fullWidth
       variant="outlined"
-      label={passwordIsValid ? 'Password' : 'Minimum 8 characters'}
+      label={passwordIsValid ? label : 'Minimum 8 characters'}
       error={!passwordIsValid}
       onChange={(evt: React.ChangeEvent<HTMLTextAreaElement>) => {
         setPassword(evt.target.value)

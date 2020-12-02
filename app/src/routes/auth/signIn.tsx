@@ -69,7 +69,7 @@ const SignIn: React.FunctionComponent<{}> = () => {
               <Username usernameIsValid={usernameIsValid} setUsername={setUsername} />{' '}
             </Box>
             <Box width="80%" m={1}>
-              <Password passwordIsValid={passwordIsValid} setPassword={setPassword} />
+              <Password label="Password" passwordIsValid={passwordIsValid} setPassword={setPassword} />
               <Grid container direction="row" justify="flex-start" alignItems="center">
                 <Box onClick={passwordResetClicked} mt={2}>
                   <Typography className={classes.hover} variant="body2">

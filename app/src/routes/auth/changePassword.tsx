@@ -49,13 +49,22 @@ export default function ChangePassword() {
     }
   }
 
+  const signOut = async () => {
+    try {
+      await authContext.signOut()
+      history.push('/')
+    } catch (err) {
+      setError(err.message)
+    }
+  }
+
   const updatePassword = (
     <>
       <Box width="80%" m={1}>
-        <Password passwordIsValid={oldPasswordIsValid} setPassword={setOldPassword} />
+        <Password label="Old Password" passwordIsValid={oldPasswordIsValid} setPassword={setOldPassword} />
       </Box>
       <Box width="80%" m={1}>
-        <Password passwordIsValid={newPasswordIsValid} setPassword={setNewPassword} />
+        <Password label="Password" passwordIsValid={newPasswordIsValid} setPassword={setNewPassword} />
       </Box>
       {/* Error */}
       <Box mt={2}>
@@ -87,7 +96,7 @@ export default function ChangePassword() {
       <Typography variant="h5">{`Password Changed`}</Typography>
 
       <Box m={4}>
-        <Button onClick={() => history.push('signin')} color="primary" variant="contained">
+        <Button onClick={signOut} color="primary" variant="contained">
           Sign In
         </Button>
       </Box>

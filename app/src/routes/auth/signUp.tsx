@@ -67,10 +67,10 @@ const SignUp: React.FunctionComponent<{}> = () => {
         <Username usernameIsValid={usernameIsValid} setUsername={setUsername} />
       </Box>
       <Box width="80%" m={1}>
-        <Password passwordIsValid={passwordIsValid} setPassword={setPassword} />
+        <Password label="Password" passwordIsValid={passwordIsValid} setPassword={setPassword} />
       </Box>
       <Box width="80%" m={1}>
-        <Password passwordIsValid={passwordConfirmIsValid} setPassword={setPasswordConfirm} />
+        <Password label="Confirm Password" passwordIsValid={passwordConfirmIsValid} setPassword={setPasswordConfirm} />
       </Box>
       <Box mt={2}>
         <Typography color="error" variant="body2">
