@@ -92,13 +92,13 @@ export async function signInWithEmail(username: string, password: string) {
     }
     const authenticationDetails = new AuthenticationDetails(authenticationData)
 
-    const cognitoUser = getCognitoUser(username)
+    currentUser = getCognitoUser(username)
 
-    cognitoUser.authenticateUser(authenticationDetails, {
-      onSuccess: function (res) {
+    currentUser.authenticateUser(authenticationDetails, {
+      onSuccess: function (res: any) {
         resolve(res)
       },
-      onFailure: function (err) {
+      onFailure: function (err: any) {
         reject(err)
       },
     })
