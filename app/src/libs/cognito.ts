@@ -30,6 +30,10 @@ function getCognitoUser(username: string) {
 }
 
 export async function getSession() {
+  if (!currentUser) {
+    currentUser = userPool.getCurrentUser()
+  }
+
   return new Promise(function (resolve, reject) {
     currentUser.getSession(function (err: any, session: any) {
       if (err) {

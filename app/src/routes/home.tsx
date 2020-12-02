@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import Link from '@material-ui/core/Link'
 
 import logoImage from './logo.png'
 
@@ -55,9 +57,16 @@ export default function Home() {
               <img src={logoImage} width={224} height={224} alt="logo" />
             </Box>
             <Box m={2}>
-              <Typography className={classes.title} variant="h2">
-                AWS Cognito Starter Home
-              </Typography>
+              <Link underline="none" color="inherit" href="https://github.com/dbroadhurst/aws-cognito-react">
+                <Grid container direction="row" justify="center" alignItems="center">
+                  <Box mr={3}>
+                    <GitHubIcon fontSize="large" />
+                  </Box>
+                  <Typography className={classes.title} variant="h3">
+                    AWS Cognito Starter Home
+                  </Typography>
+                </Grid>
+              </Link>
             </Box>
             <Box m={2}>
               <Button onClick={signOutClicked} variant="contained" color="primary">
