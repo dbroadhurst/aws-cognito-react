@@ -50,7 +50,7 @@ npm install
 npm start
 ```
 
-## Other solutions
+## Other Solutions
 
 [Firebase Auth](https://firebase.google.com/products/auth?gclid=Cj0KCQiAtqL-BRC0ARIsAF4K3WFgWD7NC4y4eJfdGZg68t4ovEoqpGrqWWk2kj1_htu5e2844DCBKVoaAhl_EALw_wcB) - Great for mobile and web. Fairly limited but easy to use. Integrates really nicely with other Firebase services
 
