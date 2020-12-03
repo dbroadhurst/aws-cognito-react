@@ -6,6 +6,10 @@ If you are looking for v1 version it can be found on the legacy branch. With the
 
 Reference implementation / boilerplate for AWS Cognito user management
 
+## Demo
+
+[aws-conginto-react-demo](http://aws-cognito-react.s3-website-us-west-2.amazonaws.com/)
+
 ## v2 Changes
 
 - Switched to Typscript
