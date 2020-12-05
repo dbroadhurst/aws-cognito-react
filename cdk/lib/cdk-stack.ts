@@ -35,6 +35,21 @@ export class CdkStack extends cdk.Stack {
       },
     })
 
+    const googleId = process.env.GOOGLE_ID
+    const googleSecret = process.env.GOOGLE_SECRET
+
+    if (googleId) {
+      console.log('adding google identity provider')
+      console.log(`id=${googleId}`)
+      console.log(`secret=${googleSecret}`)
+      new cognito.UserPoolIdentityProviderGoogle(this, 'google id', {
+        clientId: `${googleId}`,
+        clientSecret: `${googleSecret}`,
+        userPool,
+        scopes: ['profile', 'email', 'openid'],
+      })
+    }
+
     const client = userPool.addClient('app-client')
 
     new cdk.CfnOutput(this, 'userPoolId', {
