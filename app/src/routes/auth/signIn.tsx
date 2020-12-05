@@ -10,9 +10,11 @@ import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 
 import { useValidPassword, useValidUsername } from '../../hooks/useAuthHooks'
-import { Password, Username } from '../../components/authComponents'
+import { Password, Username } from './authComponents'
 
 import { AuthContext } from '../../contexts/authContext'
+
+import GoogleSignIn from './googleSignIn'
 
 const useStyles = makeStyles({
   root: {
@@ -59,6 +61,12 @@ const SignIn: React.FunctionComponent<{}> = () => {
         <Paper style={{ width: '100%', padding: 32 }}>
           <Grid container direction="column" justify="center" alignItems="center">
             {/* Title */}
+            <Box m={2}>
+              <Typography variant="h3">Sign in with</Typography>
+            </Box>
+            <Grid container direction="row" justify="center" alignItems="center">
+              <GoogleSignIn />
+            </Grid>
             <Box m={2}>
               <Typography variant="h3">Sign in</Typography>
             </Box>

@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 
 import { useValidCode, useValidUsername } from '../../hooks/useAuthHooks'
-import { Code, Username } from '../../components/authComponents'
+import { Code, Username } from './authComponents'
 
 import { AuthContext } from '../../contexts/authContext'
 
