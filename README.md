@@ -32,7 +32,8 @@ CDK deploy instructions
 
 ```bash
 cd cdk
-cdk deploy
+npm run cdk bootstrap   # only needed first time
+npm run cdk deploy
 ```
 
 After deployment copy the userPoolId and userPoolClientId values from the command line window; you will need these values in the app config step

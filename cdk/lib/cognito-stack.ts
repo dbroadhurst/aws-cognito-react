@@ -1,10 +1,21 @@
-import * as cdk from '@aws-cdk/core'
-import * as cognito from '@aws-cdk/aws-cognito'
+// import { Stack, StackProps } from 'aws-cdk-lib';
+// import { Construct } from 'constructs';
+
+// export class CognitoStack extends Stack {
+//   constructor(scope: Construct, id: string, props?: StackProps) {
+//     super(scope, id, props);
+
+//     // The code that defines your stack goes here
+//   }
+// }
+
+import { aws_cognito as cognito, Stack, StackProps, CfnOutput } from 'aws-cdk-lib'
+import { Construct } from 'constructs'
 
 // https://docs.aws.amazon.com/cdk/api/latest/docs/aws-cognito-readme.html
 
-export class CdkStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+export class CognitoStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props)
 
     // The code that defines your stack goes here
@@ -37,11 +48,11 @@ export class CdkStack extends cdk.Stack {
 
     const client = userPool.addClient('app-client')
 
-    new cdk.CfnOutput(this, 'userPoolId', {
+    new CfnOutput(this, 'userPoolId', {
       value: userPool.userPoolId,
     })
 
-    new cdk.CfnOutput(this, 'userPoolClientId', {
+    new CfnOutput(this, 'userPoolClientId', {
       value: client.userPoolClientId,
     })
   }

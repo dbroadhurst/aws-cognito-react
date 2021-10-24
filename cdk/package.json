@@ -1,9 +1,8 @@
 {
-  "name": "cdk",
-  "version": "1.0.0",
-  "license": "MIT",
+  "name": "cognito",
+  "version": "0.1.0",
   "bin": {
-    "cdk": "bin/cdk.js"
+    "cognito": "bin/cognito.js"
   },
   "scripts": {
     "build": "tsc",
@@ -12,18 +11,17 @@
     "cdk": "cdk"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.75.0",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
     "jest": "^26.4.2",
     "ts-jest": "^26.2.0",
-    "aws-cdk": "1.75.0",
+    "aws-cdk": "2.0.0-rc.25",
     "ts-node": "^9.0.0",
     "typescript": "~3.9.7"
   },
   "dependencies": {
-    "@aws-cdk/aws-cognito": "^1.75.0",
-    "@aws-cdk/core": "1.75.0",
+    "aws-cdk-lib": "2.0.0-rc.25",
+    "constructs": "^10.0.0",
     "source-map-support": "^0.5.16"
   }
 }
