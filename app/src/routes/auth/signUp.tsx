@@ -54,7 +54,9 @@ const SignUp: React.FunctionComponent<{}> = () => {
       await authContext.signUpWithEmail(username, email, password)
       setCreated(true)
     } catch (err) {
-      setError(err.message)
+      if (err instanceof Error) {
+        setError(err.message)
+      }
     }
   }
 

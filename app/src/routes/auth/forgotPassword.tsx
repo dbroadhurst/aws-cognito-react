@@ -54,7 +54,9 @@ export default function ForgotPassword() {
       await authContext.forgotPassword(username, code, password)
       setReset(true)
     } catch (err) {
-      setError(err.message)
+      if (err instanceof Error) {
+        setError(err.message)
+      }
     }
   }
 

@@ -40,7 +40,7 @@ const SignIn: React.FunctionComponent<{}> = () => {
     try {
       await authContext.signInWithEmail(username, password)
       history.push('home')
-    } catch (err) {
+    } catch (err: any) {
       if (err.code === 'UserNotConfirmedException') {
         history.push('verify')
       } else {

@@ -26,13 +26,17 @@ export default function ChangePassword() {
   const [error, setError] = useState('')
   const [reset, setReset] = useState(false)
 
-  const { password: oldPassword, setPassword: setOldPassword, passwordIsValid: oldPasswordIsValid } = useValidPassword(
-    ''
-  )
+  const {
+    password: oldPassword,
+    setPassword: setOldPassword,
+    passwordIsValid: oldPasswordIsValid,
+  } = useValidPassword('')
 
-  const { password: newPassword, setPassword: setNewPassword, passwordIsValid: newPasswordIsValid } = useValidPassword(
-    ''
-  )
+  const {
+    password: newPassword,
+    setPassword: setNewPassword,
+    passwordIsValid: newPasswordIsValid,
+  } = useValidPassword('')
 
   const isValid = !oldPasswordIsValid || oldPassword.length === 0 || !newPasswordIsValid || newPassword.length === 0
 
@@ -44,7 +48,7 @@ export default function ChangePassword() {
     try {
       await authContext.changePassword(oldPassword, newPassword)
       setReset(true)
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message)
     }
   }
@@ -54,7 +58,9 @@ export default function ChangePassword() {
       await authContext.signOut()
       history.push('/')
     } catch (err) {
-      setError(err.message)
+      if (err instanceof Error) {
+        setError(err.message)
+      }
     }
   }
 
