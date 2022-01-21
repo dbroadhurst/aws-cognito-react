@@ -27,6 +27,7 @@ export const Password: React.FunctionComponent<{
   return (
     <TextField
       fullWidth
+      type="password"
       variant="outlined"
       label={passwordIsValid ? label : 'Minimum 8 characters'}
       error={!passwordIsValid}
