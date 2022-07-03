@@ -29,21 +29,25 @@ const defaultState: IAuth = {
   authStatus: AuthStatus.Loading,
 }
 
+type Props = {
+  children?: React.ReactNode
+}
+
 export const AuthContext = React.createContext(defaultState)
 
-export const AuthIsSignedIn: React.FunctionComponent = ({ children }) => {
+export const AuthIsSignedIn = ({ children }: Props) => {
   const { authStatus }: IAuth = useContext(AuthContext)
 
   return <>{authStatus === AuthStatus.SignedIn ? children : null}</>
 }
 
-export const AuthIsNotSignedIn: React.FunctionComponent = ({ children }) => {
+export const AuthIsNotSignedIn = ({ children }: Props) => {
   const { authStatus }: IAuth = useContext(AuthContext)
 
   return <>{authStatus === AuthStatus.SignedOut ? children : null}</>
 }
 
-const AuthProvider: React.FunctionComponent = ({ children }) => {
+const AuthProvider = ({ children }: Props) => {
   const [authStatus, setAuthStatus] = useState(AuthStatus.Loading)
   const [sessionInfo, setSessionInfo] = useState({})
   const [attrInfo, setAttrInfo] = useState([])
